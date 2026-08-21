@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* We control dark mode via a data-theme attribute (light is the hard
+   default, no prefers-color-scheme auto-switch) — repoint Tailwind's
+   `dark:` variant at that instead of the OS-level media query. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --color-bg: #ffffff;
+  --color-bg-raised: #f4f7f6;
+  --color-bg-raised-2: #eaf0ee;
+  --color-line: #e1e8e5;
+  --color-fg: #0f2019;
+  --color-fg-muted: #5c6b66;
+  --color-primary: #1c9d5a;
+  --color-primary-dim: #167c48;
+  --color-accent: #e5972a;
+  --color-accent-dim: #b9761a;
+  --color-focus: #e5972a;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #081210;
+  --color-bg-raised: #0e1815;
+  --color-bg-raised-2: #13201c;
+  --color-line: #21302a;
+  --color-fg: #eef4f1;
+  --color-fg-muted: #93a49c;
+  --color-primary: #34d399;
+  --color-primary-dim: #1c9d5a;
+  --color-accent: #fbbf24;
+  --color-accent-dim: #d9970d;
+  --color-focus: #fbbf24;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-raised: var(--color-bg-raised);
+  --color-bg-raised-2: var(--color-bg-raised-2);
+  --color-line: var(--color-line);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-primary: var(--color-primary);
+  --color-primary-dim: var(--color-primary-dim);
+  --color-accent: var(--color-accent);
+  --color-accent-dim: var(--color-accent-dim);
+  --color-focus: var(--color-focus);
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jbmono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Respect users who've asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.card-glow {
+  box-shadow: 0 0 0 1px var(--color-line);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-glow:hover,
+.card-glow:focus-within {
+  box-shadow: 0 0 0 1px var(--color-primary), 0 10px 30px -10px rgba(28, 157, 90, 0.35);
+  transform: translateY(-2px);
+}
+
+:root[data-theme="dark"] .card-glow:hover,
+:root[data-theme="dark"] .card-glow:focus-within {
+  box-shadow: 0 0 0 1px var(--color-primary), 0 0 30px -8px rgba(52, 211, 153, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dim);
+}
+
+@keyframes charge-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes charge-fill {
+  0% {
+    width: 15%;
+  }
+  50% {
+    width: 92%;
+  }
+  100% {
+    width: 15%;
+  }
+}
