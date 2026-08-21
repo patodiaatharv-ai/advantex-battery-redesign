@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -49,7 +50,7 @@ export default function ExpertisePage() {
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {SAFETY_FEATURES.map((f, i) => (
               <li key={f.title}>
-                <FeatureCard title={f.title} body={f.body} delay={i * 0.08} />
+                <FeatureCard title={f.title} body={f.body} icon={f.icon} delay={i * 0.08} />
               </li>
             ))}
           </ul>
@@ -72,8 +73,17 @@ export default function ExpertisePage() {
                   <span className="absolute -left-[calc(2rem+5px)] flex h-6 w-6 items-center justify-center rounded-full bg-primary font-mono text-[10px] font-bold text-white">
                     {i + 1}
                   </span>
-                  <h3 className="font-display text-base font-semibold text-fg">{step.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-fg-muted">{step.body}</p>
+                  <div className="flex items-start gap-4">
+                    {step.icon && (
+                      <div className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-line bg-bg-raised p-2 sm:flex">
+                        <Image src={step.icon} alt="" width={40} height={40} className="h-full w-full object-contain" />
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="font-display text-base font-semibold text-fg">{step.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-fg-muted">{step.body}</p>
+                    </div>
+                  </div>
                 </Reveal>
               ))}
             </ol>

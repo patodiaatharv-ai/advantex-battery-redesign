@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/PageHero";
 import { StatTile } from "@/components/StatTile";
 import { Reveal } from "@/components/motion/Reveal";
+import { ImageGallery } from "@/components/ProductSpecs";
 import { ContactSection } from "@/components/ContactSection";
-import { ABOUT, SITE, STATS } from "@/lib/site-config";
+import { ABOUT, ABOUT_GALLERY, GROWTH_CHART, SITE, STATS } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: `About Advantex — ${SITE.fullName}`,
@@ -56,7 +58,31 @@ export default function AboutPage() {
                 <StatTile key={s.label} value={s.value} label={s.label} sub={s.sub} delay={i * 0.08} />
               ))}
             </div>
+
+            <Reveal delay={0.2} className="mt-12">
+              <div className="card-glow overflow-hidden rounded-2xl border border-line bg-bg">
+                <Image
+                  src={GROWTH_CHART}
+                  alt="Advantex Battery growth chart"
+                  width={1600}
+                  height={700}
+                  className="h-auto w-full"
+                />
+              </div>
+            </Reveal>
           </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <Reveal className="mb-10 text-center">
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Behind the Scenes
+            </p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-fg sm:text-3xl">
+              Our Gallery
+            </h2>
+          </Reveal>
+          <ImageGallery images={ABOUT_GALLERY} />
         </section>
 
         <ContactSection />

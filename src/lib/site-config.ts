@@ -97,18 +97,22 @@ export const QUALITY_FEATURES = [
   {
     title: "Advanced Design & Battery Management System",
     body: "Every battery pack is designed by expert technicians with a focus on optimal capacity, ease of assembly, and long-term performance. Our Battery Management System (BMS) acts as the heart and brain of every pack, ensuring safety, parameter testing, remote monitoring, and seamless IoT integration across our entire range.",
+    icon: "/images/icons/feature-bms.png",
   },
   {
     title: "Premium Lithium Cells",
     body: "We use only select AA-grade LFP cells, and for NMC packs, we are among the few Indian manufacturers using almost exclusively Samsung lithium cells. This ensures superior battery life, reliability, and high-performance standards for every pack.",
+    icon: "/images/icons/feature-cells.png",
   },
   {
     title: "Pure & Standard Material Quality",
     body: "From high-purity nickel strips and epoxy sheets to insulation paper, bus bars, and cables, all intermediate materials are carefully selected to meet the highest quality standards. This improves conductivity, reduces resistance, enhances thermal stability, and ensures safer, more efficient battery packs.",
+    icon: "/images/icons/feature-material.png",
   },
   {
     title: "Final Product Testing & Best Value",
     body: "Each battery pack undergoes rigorous testing, including 0–100–0 for capacity verification and 0–100–30 for performance evaluation before sealing and packaging. By combining premium components with efficient sourcing and manufacturing, we deliver exceptional quality and performance without unnecessary cost escalation.",
+    icon: "/images/icons/feature-testing.png",
   },
 ];
 
@@ -116,6 +120,26 @@ export const CONNECT_CTA = {
   heading: "Let's power the future together.",
   subheading: "Reach out to learn more or start a conversation.",
 };
+
+export interface CategoryPanel {
+  title: string;
+  href: string;
+  image: string;
+}
+
+export const CATEGORY_PANELS: CategoryPanel[] = [
+  { title: "2-Wheeler Batteries", href: "/2-wheeler-batteries", image: "/images/home/panel-2wheeler.jpg" },
+  { title: "3-Wheeler Batteries", href: "/3-wheeler-batteries", image: "/images/home/panel-3wheeler.jpg" },
+  { title: "Energy Storage Systems", href: "/energy-storage-systems", image: "/images/home/panel-ess.jpg" },
+  { title: "Inverter Battery", href: "/inverter-battery", image: "/images/home/panel-inverter.jpg" },
+  { title: "Other Solutions", href: "/other-solutions", image: "/images/home/panel-other-solutions.jpg" },
+];
+
+export const CLIENT_LOGOS = [
+  "/images/clients/client-b.png",
+  "/images/clients/client-c.png",
+  "/images/clients/brand-c.jpg",
+];
 
 // ---------- ABOUT ----------
 
@@ -139,6 +163,12 @@ export const STATS = [
   { value: "4.5 Sigma", label: "Rating", sub: "< 0.2% manufacturing defects" },
   { value: "225%", label: "Growth", sub: "For last four years" },
 ];
+
+export const GROWTH_CHART = "/images/about/growth-chart.png";
+
+export const ABOUT_GALLERY = [1, 2, 3, 4, 5, 8, 9, 11, 12, 13, 14, 16, 18, 19].map(
+  (n) => `/images/about/gallery-${n}.png`,
+);
 
 // ---------- OUR STORY & LEGACY ----------
 
@@ -270,18 +300,22 @@ export const SAFETY_FEATURES = [
   {
     title: "BMS Facilities",
     body: "Advantex BMS includes short-circuit and overcurrent protection, SOC-based cell balancing, and temperature-sensitive cutoff logic. It enables real-time monitoring, performance optimization, and safe operation under extreme conditions.",
+    icon: "/images/expertise/safety-a.png",
   },
   {
     title: "Fire Safety",
     body: "Multi-layer fire-retardant materials are integrated within the battery structure, along with an external fire-resistant PVC layer. This design enhances fire suppression capability and supports safer emergency response.",
+    icon: "/images/expertise/safety-b.png",
   },
   {
     title: "Waterproofing",
     body: "Our battery packs are available with resin protection and IP-rated sealing. Fluid-sealed variants are also offered, making them ideal for rugged industrial environments and resistance to direct water contact.",
+    icon: "/images/expertise/safety-c.png",
   },
   {
     title: "AIS Norms",
     body: "All battery packs are designed to meet relevant industry standards and exceed key government safety norms. Each unit is evaluated for structural integrity, fire safety, waterproofing, and short-circuit protection.",
+    icon: "/images/expertise/safety-d.png",
   },
 ];
 
@@ -289,30 +323,37 @@ export const MANUFACTURING_PROCESS = [
   {
     title: "Cell Procurement & Grading",
     body: "High-quality lithium cells sourced from A-grade manufacturers undergo full charge–discharge cycles. This ensures uniform capacity and eliminates out-of-spec cells.",
+    icon: "/images/expertise/process-1.png",
   },
   {
     title: "Cell Sorting & Conditioning",
     body: "100% IR testing is conducted with a low tolerance threshold (<±0.06), followed by voltage matching and sorting based on each cell's internal resistance.",
+    icon: "/images/expertise/process-2.png",
   },
   {
     title: "Insulation & Layering",
     body: "Barley paper, epoxy sheets, and thermal paste are inserted between layers. All insulation materials are precision-cut to ensure accurate fit and reliable thermal performance.",
+    icon: "/images/expertise/process-3.png",
   },
   {
     title: "Assembly & Welding",
     body: "Layout is pre-verified for polarity, shape, and safety using AutoCAD-based holder designs aligned with pack specifications. Cells are grouped and spot-welded using pure nickel.",
+    icon: "/images/expertise/process-4.png",
   },
   {
     title: "BMS Integration",
     body: "Custom BMS units with high-current protection are integrated into each pack. Every unit is tested using a dedicated BMS tester to validate overcharge, thermal, and short-circuit protection.",
+    icon: "/images/expertise/process-5.png",
   },
   {
     title: "Charge/Discharge Testing",
     body: "Post-assembly, packs undergo controlled charge–discharge test cycles. Charging to ~35% and discharging to ~10–15% verifies voltage accuracy, temperature control, and software stability.",
+    icon: "/images/expertise/process-6.png",
   },
   {
     title: "Final QC & Packaging",
     body: "Each unit undergoes visual and technical inspection of insulation and wiring, followed by packaging in custom-designed enclosures with built-in fail-safes for heat and vibration protection.",
+    icon: "/images/expertise/process-7.png",
   },
 ];
 
@@ -331,6 +372,9 @@ export interface ProductPage {
   body: string;
   configurations?: string[];
   specs?: { label: string; value: string }[];
+  heroImage?: string;
+  productImage?: string;
+  gallery?: string[];
 }
 
 export const TWO_WHEELER: ProductPage = {
@@ -344,6 +388,9 @@ export const TWO_WHEELER: ProductPage = {
     { label: "Capacity Range", value: "21Ah – 43Ah" },
     { label: "Design", value: "Custom enclosures, in-house" },
   ],
+  heroImage: "/images/products/2-wheeler/hero.jpg",
+  productImage: "/images/products/2-wheeler/product.png",
+  gallery: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `/images/products/2-wheeler/gallery-${n}.png`),
 };
 
 export const THREE_WHEELER: ProductPage = {
@@ -353,6 +400,17 @@ export const THREE_WHEELER: ProductPage = {
   heading: "Powering the Future of 3-Wheelers",
   body: "Electric 3-wheelers are transforming mass mobility with clean, affordable transportation. We support this shift with PCB-integrated BMS and screw-type cells designed for enhanced safety, durability, and cost efficiency. Electric 3-wheelers are rapidly replacing manual carts and internal combustion engine (ICE) vehicles in the last-mile delivery sector. Advantex provides robust battery configurations optimized for high payload capacity and consistent performance. Most battery packs are designed to fit under the rear or middle seat, depending on the vehicle's structure and customer requirements.",
   configurations: ["51.2V 105Ah", "64V 105Ah", "51.2V 132Ah", "51.2V 206Ah", "51.2V–206Ah (64V variant available)", "51.2V 100Ah"],
+  heroImage: "/images/products/3-wheeler/hero.png",
+  productImage: "/images/products/3-wheeler/product.png",
+  gallery: [
+    "/images/products/3-wheeler/gallery-9.png",
+    "/images/products/3-wheeler/gallery-10.png",
+    "/images/products/3-wheeler/gallery-11.png",
+    "/images/products/3-wheeler/gallery-12.png",
+    "/images/products/3-wheeler/gallery-ud16.png",
+    "/images/products/3-wheeler/gallery-ud17.png",
+    "/images/products/3-wheeler/gallery-ud18.png",
+  ],
 };
 
 export const ESS: ProductPage = {
@@ -361,13 +419,30 @@ export const ESS: ProductPage = {
   eyebrow: "Battery Solutions",
   heading: "Smart Energy Storage Systems for Smarter Infrastructure",
   body: "Envision a Battery Energy Storage System that's simple to install and relocate, boasts up to 10 years of service life, and is fully scalable and aesthetically refined. Our lithium-ion technology requires no maintenance \"top-ups\" and supports advanced features such as remote monitoring, real-time charge status, and beyond.",
+  heroImage: "/images/products/ess/hero.png",
 };
 
 export const ESS_PRODUCTS = [
-  { title: "Rack-Mount ESS", body: "Rack mountable ESS battery pack. Up to 14 parallel (74 kW). Up to 6 units in one stack." },
-  { title: "Wall-Mount ESS", body: "Capacity: 51.2V – 105Ah / Power: 5.3 kW / Mounting: Wall mount" },
-  { title: "Stackable Rack ESS", body: "Capacity: 51.2V – 105Ah / Power: 5.3 kW / Mounting: Stackable rack mount" },
-  { title: "Compact Wall-Mount ESS", body: "Capacity: 51.2V – 105Ah / Power: 5.3 kW / Mounting: Wall mount" },
+  {
+    title: "Rack-Mount ESS",
+    body: "Rack mountable ESS battery pack. Up to 14 parallel (74 kW). Up to 6 units in one stack.",
+    image: "/images/products/ess/product.png",
+  },
+  {
+    title: "Wall-Mount ESS",
+    body: "Capacity: 51.2V – 105Ah / Power: 5.3 kW / Mounting: Wall mount",
+    image: "/images/products/ess/product.png",
+  },
+  {
+    title: "Stackable Rack ESS",
+    body: "Capacity: 51.2V – 105Ah / Power: 5.3 kW / Mounting: Stackable rack mount",
+    image: "/images/products/ess/product.png",
+  },
+  {
+    title: "Compact Wall-Mount ESS",
+    body: "Capacity: 51.2V – 105Ah / Power: 5.3 kW / Mounting: Wall mount",
+    image: "/images/products/ess/product.png",
+  },
 ];
 
 export const ESS_SECTIONS = {
@@ -375,12 +450,14 @@ export const ESS_SECTIONS = {
     heading: "Commercial ESS",
     body: "Our energy storage systems provide uninterrupted power supply (UPS), voltage stabilization, and backup power in one space-saving solution. Ideal for homes, offices, and industrial facilities, they occupy up to one-third the footprint of conventional lead-acid systems and reliably support high-demand loads such as air conditioning.",
     disclaimer: "Battery systems can be configured for 1C discharge rates (full discharge in one hour). Heavy appliances such as air conditioners should be operated through inverter-driven systems only.",
+    image: "/images/products/ess/commercial.png",
   },
   solar: {
     heading: "Solar Batteries",
     hook: "If a solar plant lasts over 20 years, why settle for battery storage that lasts only 3–4 years?",
     subheading: "Durable, maintenance-free performance",
     body: "Our lithium-ion solar storage systems deliver over 10 years of reliable operation, with no servicing or water refilling required.",
+    images: ["/images/products/ess/solar-1.jpg", "/images/products/ess/solar-2.jpg"],
   },
 };
 
@@ -390,13 +467,30 @@ export const INVERTER_BATTERY: ProductPage = {
   eyebrow: "Battery Solutions",
   heading: "Inverter Battery",
   body: "Lithium-ion inverter battery solutions built for dependable backup power — compact, maintenance-free, and engineered to replace lead-acid systems with longer service life and faster recharge.",
+  heroImage: "/images/products/inverter/hero.png",
 };
 
 export const INVERTER_PRODUCTS = [
-  { title: "All-in-One Inverter Combo", body: "Nominal Voltage: 220Vac / Output Voltage: 220Vac / Inverter Rating: 1100VA / Battery Power: 1200 Watt" },
-  { title: "Inverter Battery — 1.6–2.6kW", body: "Nominal Voltage: 12.8V / Power: 1.6 – 2.6kW / Battery Power: 1600 – 2600 Watt" },
-  { title: "Inverter Battery — 1.3kW", body: "Nominal Voltage: 12.8V / Power: 1.3kW / Battery Power: 1300 Watt" },
-  { title: "Inverter Battery — 2.7–5.33kW", body: "Nominal Voltage: 25.6V / Power: 2.7 – 5.33kW / Battery Power: 2700 – 5330 Watt" },
+  {
+    title: "All-in-One Inverter Combo",
+    body: "Nominal Voltage: 220Vac / Output Voltage: 220Vac / Inverter Rating: 1100VA / Battery Power: 1200 Watt",
+    image: "/images/products/inverter/product.png",
+  },
+  {
+    title: "Inverter Battery — 1.6–2.6kW",
+    body: "Nominal Voltage: 12.8V / Power: 1.6 – 2.6kW / Battery Power: 1600 – 2600 Watt",
+    image: "/images/products/inverter/gallery-1.png",
+  },
+  {
+    title: "Inverter Battery — 1.3kW",
+    body: "Nominal Voltage: 12.8V / Power: 1.3kW / Battery Power: 1300 Watt",
+    image: "/images/products/inverter/gallery-3.png",
+  },
+  {
+    title: "Inverter Battery — 2.7–5.33kW",
+    body: "Nominal Voltage: 25.6V / Power: 2.7 – 5.33kW / Battery Power: 2700 – 5330 Watt",
+    image: "/images/products/inverter/gallery-2.jpg",
+  },
 ];
 
 export const OTHER_SOLUTIONS: ProductPage = {
@@ -405,6 +499,7 @@ export const OTHER_SOLUTIONS: ProductPage = {
   eyebrow: "Battery Solutions",
   heading: "Other Solutions",
   body: "Solar batteries engineered for 2000+ reliable charge cycles. Tailor-made and custom battery solutions for aerial drones, heavy loaders, commercial vehicular applications, and electronics power backup.",
+  heroImage: "/images/products/other-solutions/hero.png",
 };
 
 // ---------- OUR INNOVATION ----------
@@ -415,8 +510,13 @@ export const INNOVATION = {
   cellChemistry: {
     heading: "Advanced Cell Chemistry",
     body: "We work with the world's most trusted cell manufacturers to deliver batteries with longer life, higher energy density, and unmatched reliability.",
-    taglines: ["Smart Power.", "Intelligent Design.", "Reliable Performance."],
+    taglines: [
+      { label: "Smart Power.", icon: "/images/innovation/icon-1.png" },
+      { label: "Intelligent Design.", icon: "/images/innovation/icon-2.png" },
+      { label: "Reliable Performance.", icon: "/images/innovation/icon-3.png" },
+    ],
   },
+  supplierBanner: "/images/innovation/samsung-sdi.png",
 };
 
 export const CELL_TYPES = [

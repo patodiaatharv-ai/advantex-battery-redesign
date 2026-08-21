@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 
 export function ProductSpecs({ specs }: { specs: { label: string; value: string }[] }) {
@@ -34,16 +35,43 @@ export function ConfigurationChips({ configurations }: { configurations: string[
 export function ProductCardList({
   products,
 }: {
-  products: { title: string; body: string }[];
+  products: { title: string; body: string; image?: string }[];
 }) {
   return (
     <ul className="grid gap-5 sm:grid-cols-2">
       {products.map((p, i) => (
         <Reveal as="li" key={p.title} delay={Math.min(i * 0.06, 0.3)}>
-          <article className="card-glow h-full rounded-2xl border border-line bg-bg-raised p-6">
-            <h3 className="font-display text-base font-semibold text-fg">{p.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-fg-muted">{p.body}</p>
+          <article className="card-glow h-full overflow-hidden rounded-2xl border border-line bg-bg-raised">
+            {p.image && (
+              <div className="relative aspect-[16/10] w-full bg-bg-raised-2">
+                <Image src={p.image} alt={p.title} fill className="object-contain p-4" />
+              </div>
+            )}
+            <div className="p-6">
+              <h3 className="font-display text-base font-semibold text-fg">{p.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-fg-muted">{p.body}</p>
+            </div>
           </article>
+        </Reveal>
+      ))}
+    </ul>
+  );
+}
+
+export function ImageGallery({ images }: { images: string[] }) {
+  return (
+    <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      {images.map((src, i) => (
+        <Reveal as="li" key={src} delay={Math.min(i * 0.04, 0.3)}>
+          <div className="card-glow relative aspect-square overflow-hidden rounded-xl border border-line bg-bg-raised-2">
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 25vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </Reveal>
       ))}
     </ul>

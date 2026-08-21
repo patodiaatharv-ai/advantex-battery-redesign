@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -35,6 +36,17 @@ export default function InnovationPage() {
               {INNOVATION.cellChemistry.body}
             </p>
           </Reveal>
+
+          <ul className="mt-8 flex flex-wrap justify-center gap-6">
+            {INNOVATION.cellChemistry.taglines.map((t, i) => (
+              <Reveal as="li" key={t.label} delay={i * 0.06} className="flex flex-col items-center gap-2">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 p-2.5">
+                  <Image src={t.icon} alt="" width={36} height={36} className="h-full w-full object-contain" />
+                </div>
+                <p className="text-sm font-semibold text-fg">{t.label}</p>
+              </Reveal>
+            ))}
+          </ul>
 
           <ul className="mt-10 grid gap-6 sm:grid-cols-2">
             {CELL_TYPES.map((cell, i) => (
@@ -125,6 +137,16 @@ export default function InnovationPage() {
                 </li>
               ))}
             </ul>
+            {INNOVATION.supplierBanner && (
+              <div className="relative mx-auto mt-8 h-16 w-full max-w-md">
+                <Image
+                  src={INNOVATION.supplierBanner}
+                  alt="Samsung SDI"
+                  fill
+                  className="object-contain opacity-90"
+                />
+              </div>
+            )}
           </Reveal>
         </section>
 

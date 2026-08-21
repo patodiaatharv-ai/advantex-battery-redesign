@@ -19,7 +19,7 @@ export function QualitySection() {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {QUALITY_FEATURES.map((f, i) => (
             <li key={f.title}>
-              <FeatureCard title={f.title} body={f.body} index={i} delay={i * 0.08} />
+              <FeatureCard title={f.title} body={f.body} icon={f.icon} index={i} delay={i * 0.08} />
             </li>
           ))}
         </ul>
