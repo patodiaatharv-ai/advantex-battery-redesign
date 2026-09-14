@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { EnergyBackdrop } from "@/components/EnergyBackdrop";
+import { RouteLoader } from "@/components/RouteLoader";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SITE } from "@/lib/site-config";
 
@@ -57,6 +58,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <EnergyBackdrop />
+        <RouteLoader />
         {children}
         <WhatsAppButton />
       </body>

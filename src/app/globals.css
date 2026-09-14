@@ -156,3 +156,111 @@ body {
     width: 15%;
   }
 }
+
+/* Loading mark: bolt strikes in, then A and B pop in after it, hold as the
+   assembled logo, fade out, loop. Each piece gets its own keyframe so the
+   sequence and shared hold/fade beat stay exactly in sync. */
+@keyframes bolt-strike-full {
+  0% {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  26% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
+  34% {
+    fill-opacity: 1;
+    filter: drop-shadow(0 0 7px var(--color-fg-muted));
+  }
+  85% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    filter: drop-shadow(0 0 7px var(--color-fg-muted));
+  }
+  95%,
+  100% {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+}
+
+@keyframes pop-a {
+  0%,
+  30% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  48% {
+    transform: scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  95%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes pop-b {
+  0%,
+  44% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  54% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  62% {
+    transform: scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  95%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes mark-glow {
+  0%,
+  30% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.1);
+  }
+  85% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  95%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes loader-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
