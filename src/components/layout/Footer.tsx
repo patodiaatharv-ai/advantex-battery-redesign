@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { FOOTER_CTA, FOOTER_LINKS, NAV_LINKS, SITE } from "@/lib/site-config";
 import { InstagramIcon, FacebookIcon, LinkedInIcon, YoutubeIcon } from "@/components/BrandIcons";
@@ -10,12 +11,12 @@ export function Footer() {
         <div className="rounded-3xl border border-line bg-bg p-8 text-center sm:p-12">
           <h2 className="font-display text-2xl font-bold text-fg sm:text-3xl">{FOOTER_CTA.heading}</h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-fg-muted">{FOOTER_CTA.body}</p>
-          <a
+          <Link
             href="/contact-us"
             className="mt-6 inline-flex items-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
           >
             {FOOTER_CTA.cta}
-          </a>
+          </Link>
         </div>
 
         <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -43,9 +44,9 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-fg-muted transition-colors hover:text-primary">
+                  <Link href={link.href} className="text-sm text-fg-muted transition-colors hover:text-primary">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -56,9 +57,9 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {NAV_LINKS.find((l) => l.label === "Products")?.children?.map((child) => (
                 <li key={child.href}>
-                  <a href={child.href} className="text-sm text-fg-muted transition-colors hover:text-primary">
+                  <Link href={child.href} className="text-sm text-fg-muted transition-colors hover:text-primary">
                     {child.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -98,9 +99,9 @@ export function Footer() {
           <ul className="flex items-center gap-6">
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="hover:text-primary">
+                <Link href={link.href} className="hover:text-primary">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

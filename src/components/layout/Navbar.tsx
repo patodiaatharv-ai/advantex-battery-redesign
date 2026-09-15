@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/site-config";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -36,9 +37,9 @@ export function Navbar() {
         aria-label="Primary"
         className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8"
       >
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image src={SITE.logo} alt={SITE.fullName} width={168} height={30} priority />
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-1 font-medium text-sm">
           {NAV_LINKS.map((link) => (
@@ -48,13 +49,13 @@ export function Navbar() {
               onMouseEnter={() => link.children && setOpenDropdown(link.label)}
               onMouseLeave={() => link.children && setOpenDropdown(null)}
             >
-              <a
+              <Link
                 href={link.href}
                 className="flex items-center gap-1 rounded-md px-3 py-2 text-fg-muted transition-colors hover:text-primary"
               >
                 {link.label}
                 {link.children && <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
-              </a>
+              </Link>
 
               {link.children && (
                 <div
@@ -65,13 +66,13 @@ export function Navbar() {
                   }`}
                 >
                   {link.children.map((child) => (
-                    <a
+                    <Link
                       key={child.href}
                       href={child.href}
                       className="block rounded-lg px-3 py-2 text-sm text-fg-muted transition-colors hover:bg-bg-raised hover:text-primary"
                     >
                       {child.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -81,12 +82,12 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
-          <a
+          <Link
             href="/contact-us"
             className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white transition-transform hover:scale-105"
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -134,37 +135,37 @@ export function Navbar() {
                       <ul className="ml-3 border-l border-line pl-3">
                         {link.children.map((child) => (
                           <li key={child.href}>
-                            <a
+                            <Link
                               href={child.href}
                               onClick={() => setOpen(false)}
                               className="block rounded-md px-2 py-2.5 text-sm text-fg-muted hover:text-primary"
                             >
                               {child.label}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     )}
                   </>
                 ) : (
-                  <a
+                  <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className="block rounded-md px-2 py-3 text-fg hover:text-primary"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 )}
               </li>
             ))}
             <li>
-              <a
+              <Link
                 href="/contact-us"
                 onClick={() => setOpen(false)}
                 className="mt-2 block rounded-md bg-primary px-2 py-3 text-center font-semibold text-white"
               >
                 Get in Touch
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

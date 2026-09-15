@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { CATEGORY_PANELS } from "@/lib/site-config";
 
@@ -17,7 +18,7 @@ export function CategoryPanels() {
       <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {CATEGORY_PANELS.map((panel, i) => (
           <Reveal as="li" key={panel.href} delay={Math.min(i * 0.08, 0.4)}>
-            <a
+            <Link
               href={panel.href}
               className="card-glow group relative block h-56 overflow-hidden rounded-2xl border border-line"
             >
@@ -32,7 +33,7 @@ export function CategoryPanels() {
               <p className="absolute bottom-4 left-5 font-display text-lg font-semibold text-white">
                 {panel.title}
               </p>
-            </a>
+            </Link>
           </Reveal>
         ))}
       </ul>

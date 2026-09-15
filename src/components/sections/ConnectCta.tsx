@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { CONNECT_CTA } from "@/lib/site-config";
 
@@ -12,18 +13,18 @@ export function ConnectCta() {
           {CONNECT_CTA.subheading}
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
+          <Link
             href="/contact-us"
             className="inline-flex items-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
           >
             Contact Us
-          </a>
-          <a
+          </Link>
+          <Link
             href="/dealership"
             className="inline-flex items-center rounded-full border border-line px-7 py-3 text-sm font-semibold text-fg transition-colors hover:border-primary hover:text-primary"
           >
             Find Dealers
-          </a>
+          </Link>
         </div>
       </Reveal>
     </section>

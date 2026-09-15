@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -71,12 +72,12 @@ export default function ContactPage() {
               <p className="mt-3 text-base leading-relaxed text-fg-muted">
                 {STRAIGHT_TO_DEALERS.body}
               </p>
-              <a
+              <Link
                 href="/dealership"
                 className="mt-6 inline-flex items-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
               >
                 {STRAIGHT_TO_DEALERS.cta}
-              </a>
+              </Link>
             </Reveal>
           </div>
         </section>

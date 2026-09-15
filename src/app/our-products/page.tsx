@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight, Battery, BatteryCharging, Cog, Sun, Wrench } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -28,7 +29,7 @@ export default function ProductsHubPage() {
               const Icon = ICONS[i % ICONS.length];
               return (
                 <Reveal as="li" key={p.href} delay={i * 0.08}>
-                  <a
+                  <Link
                     href={p.href}
                     className="card-glow group flex h-full flex-col justify-between rounded-2xl border border-line bg-bg-raised p-6"
                   >
@@ -40,7 +41,7 @@ export default function ProductsHubPage() {
                       Explore
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </p>
-                  </a>
+                  </Link>
                 </Reveal>
               );
             })}
@@ -48,7 +49,7 @@ export default function ProductsHubPage() {
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             <Reveal delay={0.1}>
-              <a
+              <Link
                 href="/about"
                 className="card-glow block rounded-2xl border border-line bg-bg-raised p-6"
               >
@@ -56,10 +57,10 @@ export default function ProductsHubPage() {
                   Our Manufacturing
                 </p>
                 <p className="mt-2 text-sm text-fg-muted">See how we maintain a quality-first approach.</p>
-              </a>
+              </Link>
             </Reveal>
             <Reveal delay={0.16}>
-              <a
+              <Link
                 href="/our-innovation"
                 className="card-glow block rounded-2xl border border-line bg-bg-raised p-6"
               >
@@ -69,7 +70,7 @@ export default function ProductsHubPage() {
                 <p className="mt-2 text-sm text-fg-muted">
                   Discover how technology meets purpose to do more.
                 </p>
-              </a>
+              </Link>
             </Reveal>
           </div>
         </section>

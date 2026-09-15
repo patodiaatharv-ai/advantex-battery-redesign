@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, Zap } from "lucide-react";
 import { HERO, QUALITY } from "@/lib/site-config";
 
@@ -45,19 +46,19 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
           >
-            <a
+            <Link
               href="/our-products"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               {HERO.cta}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact-us"
               className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3 text-sm font-semibold text-fg transition-colors hover:border-primary hover:text-primary"
             >
               Get in Touch
-            </a>
+            </Link>
           </motion.div>
         </div>
 

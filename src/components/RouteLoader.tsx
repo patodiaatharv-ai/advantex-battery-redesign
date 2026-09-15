@@ -29,7 +29,12 @@ export function RouteLoader() {
   // once the pathname actually changes (or after a safety timeout).
   useEffect(() => {
     function onClick(e: MouseEvent) {
-      if (e.defaultPrevented || e.button !== 0) return;
+      // Note: don't gate on e.defaultPrevented — next/link's own click
+      // handler (React's root listener, which sits inside the bubble path
+      // before this document-level listener runs) already calls
+      // preventDefault() for a normal left-click navigation. That's
+      // expected, not a sign the click should be ignored.
+      if (e.button !== 0) return;
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
       const anchor = (e.target as HTMLElement)?.closest("a");
