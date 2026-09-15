@@ -157,38 +157,40 @@ body {
   }
 }
 
-/* Loading mark: lightning strikes down to a ground line, the impact flashes
-   with a shockwave and sparks, and A / B are thrown outward from that exact
-   impact point (starting there, not sliding in from elsewhere) to settle
-   into the assembled logo. Holds, fades, loops. Every piece keys off the
-   same 0-100% timeline so the sequence and shared hold/fade beat line up. */
-@keyframes bolt-strike {
+/* Loading mark: built from the real logo asset (public/images/logo-icon.png
+   and logo-bolt.png, cropped from the actual PNG — see LogoLoader.tsx for
+   how). The bolt falls into place and flashes on impact with a shockwave
+   and sparks; the "A" and "B" pieces are the SAME full-icon image clipped
+   to their left/right half, starting translated back to the bolt's impact
+   point and animating out to translate(0,0) — their real position, at the
+   real angle, since it's literally the real image. Holds, fades, loops. */
+@keyframes bolt-fall {
   0% {
-    stroke-dashoffset: 1;
-    fill-opacity: 0;
-    filter: drop-shadow(0 0 0 transparent);
+    opacity: 0;
+    transform: translateY(-90%);
+  }
+  10% {
+    opacity: 1;
   }
   24% {
-    stroke-dashoffset: 0;
-    fill-opacity: 0;
+    opacity: 1;
+    transform: translateY(0);
   }
-  28% {
-    fill-opacity: 1;
-    filter: drop-shadow(0 0 10px var(--color-fg-muted));
+  29% {
+    transform: translateY(0);
+    filter: brightness(1.7) drop-shadow(0 0 8px var(--color-fg-muted));
   }
-  40% {
-    fill-opacity: 0.55;
-    filter: drop-shadow(0 0 3px var(--color-fg-muted));
+  42% {
+    filter: brightness(1) drop-shadow(0 0 0 transparent);
   }
   85% {
-    stroke-dashoffset: 0;
-    fill-opacity: 0.4;
+    opacity: 0.95;
+    transform: translateY(0);
   }
   95%,
   100% {
-    stroke-dashoffset: 1;
-    fill-opacity: 0;
-    filter: drop-shadow(0 0 0 transparent);
+    opacity: 0;
+    transform: translateY(-90%);
   }
 }
 
@@ -211,115 +213,115 @@ body {
   }
 }
 
-@keyframes impact-flash {
+@keyframes impact-flash-real {
   0%,
   25% {
     opacity: 0;
-    transform: scale(0.2);
+    transform: translate(-50%, -50%) scale(0.2);
   }
   29% {
     opacity: 1;
-    transform: scale(1.3);
+    transform: translate(-50%, -50%) scale(1.3);
   }
   40% {
     opacity: 0;
-    transform: scale(2.2);
+    transform: translate(-50%, -50%) scale(2.2);
   }
   100% {
     opacity: 0;
-    transform: scale(0.2);
+    transform: translate(-50%, -50%) scale(0.2);
   }
 }
 
-@keyframes shockwave {
+@keyframes shockwave-real {
   0%,
   26% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: translate(-50%, -50%) scale(0.3);
   }
   30% {
     opacity: 0.9;
-    transform: scale(0.4);
+    transform: translate(-50%, -50%) scale(0.4);
   }
   48% {
     opacity: 0;
-    transform: scale(2.4);
+    transform: translate(-50%, -50%) scale(2.4);
   }
   100% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: translate(-50%, -50%) scale(0.3);
   }
 }
 
-@keyframes spark-fly {
+@keyframes spark-fly-real {
   0%,
   26% {
     opacity: 0;
-    transform: translate(0, 0) scale(1);
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
   }
   30% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
   }
   46% {
     opacity: 0;
-    transform: translate(var(--dx), var(--dy)) scale(0.2);
+    transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.2);
   }
   100% {
     opacity: 0;
-    transform: translate(0, 0) scale(1);
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
   }
 }
 
-@keyframes burst-a {
+@keyframes burst-a-real {
   0%,
   27% {
     opacity: 0;
-    transform: translate(0, 0) scale(0.1) rotate(-25deg);
+    transform: translate(var(--dx), var(--dy)) scale(0.12);
   }
-  30% {
+  31% {
     opacity: 1;
   }
   52% {
-    transform: translate(var(--ax), var(--ay)) scale(1.2) rotate(6deg);
+    transform: translate(0, 0) scale(1.12);
   }
   62% {
-    transform: translate(var(--ax), var(--ay)) scale(1) rotate(0deg);
+    transform: translate(0, 0) scale(1);
   }
   85% {
     opacity: 1;
-    transform: translate(var(--ax), var(--ay)) scale(1) rotate(0deg);
+    transform: translate(0, 0) scale(1);
   }
   96%,
   100% {
     opacity: 0;
-    transform: translate(var(--ax), var(--ay)) scale(0.7) rotate(0deg);
+    transform: translate(0, 0) scale(0.85);
   }
 }
 
-@keyframes burst-b {
+@keyframes burst-b-real {
   0%,
   33% {
     opacity: 0;
-    transform: translate(0, 0) scale(0.1) rotate(25deg);
+    transform: translate(var(--dx), var(--dy)) scale(0.12);
   }
-  36% {
+  37% {
     opacity: 1;
   }
   58% {
-    transform: translate(var(--bx), var(--by)) scale(1.2) rotate(-6deg);
+    transform: translate(0, 0) scale(1.12);
   }
   68% {
-    transform: translate(var(--bx), var(--by)) scale(1) rotate(0deg);
+    transform: translate(0, 0) scale(1);
   }
   85% {
     opacity: 1;
-    transform: translate(var(--bx), var(--by)) scale(1) rotate(0deg);
+    transform: translate(0, 0) scale(1);
   }
   96%,
   100% {
     opacity: 0;
-    transform: translate(var(--bx), var(--by)) scale(0.7) rotate(0deg);
+    transform: translate(0, 0) scale(0.85);
   }
 }
 
