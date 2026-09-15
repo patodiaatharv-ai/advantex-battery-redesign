@@ -4,6 +4,12 @@ import { SITE } from "@/lib/site-config";
 const DURATION = "2.4s";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
+// Plain <img> tags don't go through Next's asset pipeline, so on GitHub
+// Pages (served under /advantex-battery-redesign/) they need this prefix
+// added by hand. NEXT_PUBLIC_BASE_PATH is baked in at build time in
+// next.config.ts and is empty everywhere else (local dev, Vercel).
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 // Uses the real logo mark, cropped into two layers (public/images/logo-icon
 // and logo-bolt — see scripts used to generate them) so the assembled frame
 // is pixel-identical to the actual logo, at the actual angle. The bolt image
@@ -118,7 +124,7 @@ export function LogoLoader({ size = 120, label }: { size?: number; label?: strin
 
         {/* the bolt: real cropped asset, falls into place then flashes */}
         <img
-          src="/images/logo-bolt.png"
+          src={`${BASE_PATH}/images/logo-bolt.png`}
           alt=""
           style={{
             ...iconPieceBaseStyle,
@@ -128,7 +134,7 @@ export function LogoLoader({ size = 120, label }: { size?: number; label?: strin
 
         {/* "A": left half of the real icon, thrown out from the impact point */}
         <img
-          src="/images/logo-icon.png"
+          src={`${BASE_PATH}/images/logo-icon.png`}
           alt=""
           style={
             {
@@ -143,7 +149,7 @@ export function LogoLoader({ size = 120, label }: { size?: number; label?: strin
 
         {/* "B": right half of the real icon, thrown out from the impact point */}
         <img
-          src="/images/logo-icon.png"
+          src={`${BASE_PATH}/images/logo-icon.png`}
           alt={SITE.fullName}
           style={
             {

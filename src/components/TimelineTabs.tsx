@@ -35,7 +35,7 @@ export function TimelineTabs() {
 
       <Reveal key={entry.year} className="mt-10">
         <div className="card-glow mx-auto max-w-2xl rounded-2xl border border-line bg-bg-raised p-8">
-          <p className="text-xs font-semibold uppercase tracking-wider text-primary">{entry.year}</p>
+          <p className="kicker">{entry.year}</p>
           <h3 className="mt-2 font-display text-2xl font-bold text-fg">{entry.title}</h3>
           <ul className="mt-5 space-y-3">
             {entry.items.map((item) => (

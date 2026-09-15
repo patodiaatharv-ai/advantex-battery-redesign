@@ -45,7 +45,7 @@ export default function AboutPage() {
         <section className="border-y border-line bg-bg-raised">
           <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
             <Reveal className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+              <p className="kicker">
                 {ABOUT.growth.heading}
               </p>
               <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-fg-muted">
@@ -75,7 +75,7 @@ export default function AboutPage() {
 
         <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
           <Reveal className="mb-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <p className="kicker">
               Behind the Scenes
             </p>
             <h2 className="mt-3 font-display text-2xl font-bold text-fg sm:text-3xl">

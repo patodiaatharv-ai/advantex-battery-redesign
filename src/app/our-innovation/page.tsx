@@ -29,7 +29,7 @@ export default function InnovationPage() {
 
         <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
           <Reveal className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <p className="kicker">
               {INNOVATION.cellChemistry.heading}
             </p>
             <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-fg-muted">

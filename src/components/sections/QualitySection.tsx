@@ -7,7 +7,7 @@ export function QualitySection() {
     <section id="quality" className="border-y border-line bg-bg-raised">
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+          <p className="kicker">
             {WHY_CHOOSE_US.heading}
           </p>
           <h2 className="mt-3 font-display text-2xl font-bold text-fg sm:text-3xl">

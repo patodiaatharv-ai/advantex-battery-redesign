@@ -33,7 +33,7 @@ export default function TwoWheelerPage() {
         {TWO_WHEELER.gallery && (
           <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
             <Reveal className="mb-8 text-center">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">Gallery</p>
+              <p className="kicker">Gallery</p>
             </Reveal>
             <ImageGallery images={TWO_WHEELER.gallery} />
           </section>

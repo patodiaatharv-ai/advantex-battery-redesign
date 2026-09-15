@@ -13,7 +13,7 @@ export function TeamCard({ member, delay = 0 }: { member: TeamMember; delay?: nu
           {initials(member.name)}
         </div>
         <h3 className="mt-4 font-display text-lg font-semibold text-fg">{member.name}</h3>
-        <p className="text-xs font-semibold uppercase tracking-wider text-primary">{member.role}</p>
+        <p className="kicker">{member.role}</p>
         <p className="mt-3 text-sm leading-relaxed text-fg-muted">{member.bio}</p>
       </article>
     </Reveal>

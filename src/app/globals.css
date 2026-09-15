@@ -122,6 +122,93 @@ body {
   box-shadow: 0 0 0 1px var(--color-primary), 0 0 30px -8px rgba(52, 211, 153, 0.5);
 }
 
+/* Small technical label: a short rule instead of a rounded "AI template"
+   pill badge — reads more like a spec-sheet header than a SaaS eyebrow. */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.kicker::before {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  flex: none;
+  background: var(--color-primary);
+}
+
+/* Two-corner viewfinder frame for photography — an industrial/technical
+   motif in place of a plain rounded card border. */
+.corner-frame {
+  position: relative;
+}
+
+.corner-frame::before,
+.corner-frame::after {
+  content: "";
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  pointer-events: none;
+}
+
+.corner-frame::before {
+  top: -0.5rem;
+  left: -0.5rem;
+  border-top: 2px solid var(--color-primary);
+  border-left: 2px solid var(--color-primary);
+}
+
+.corner-frame::after {
+  bottom: -0.5rem;
+  right: -0.5rem;
+  border-bottom: 2px solid var(--color-primary);
+  border-right: 2px solid var(--color-primary);
+}
+
+/* Floating spec callout, styled like a datasheet annotation rather than a
+   UI-mockup tooltip. */
+.spec-tag {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.35);
+  line-height: 1.1;
+}
+
+.spec-tag .spec-tag-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--color-fg);
+}
+
+.spec-tag .spec-tag-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-fg-muted);
+}
+
+/* Fine engineering dot-grid, used instead of soft decorative gradient blobs. */
+.dot-grid {
+  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

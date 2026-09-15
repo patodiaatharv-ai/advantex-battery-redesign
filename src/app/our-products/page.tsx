@@ -53,7 +53,7 @@ export default function ProductsHubPage() {
                 href="/about"
                 className="card-glow block rounded-2xl border border-line bg-bg-raised p-6"
               >
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+                <p className="kicker">
                   Our Manufacturing
                 </p>
                 <p className="mt-2 text-sm text-fg-muted">See how we maintain a quality-first approach.</p>
@@ -64,7 +64,7 @@ export default function ProductsHubPage() {
                 href="/our-innovation"
                 className="card-glow block rounded-2xl border border-line bg-bg-raised p-6"
               >
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+                <p className="kicker">
                   Our Innovation
                 </p>
                 <p className="mt-2 text-sm text-fg-muted">

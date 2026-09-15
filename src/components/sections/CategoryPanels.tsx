@@ -7,7 +7,7 @@ export function CategoryPanels() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <Reveal className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+        <p className="kicker">
           What We Build
         </p>
         <h2 className="mt-3 font-display text-2xl font-bold text-fg sm:text-3xl">

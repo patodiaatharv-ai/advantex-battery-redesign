@@ -1,24 +1,24 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Zap } from "lucide-react";
-import { HERO, QUALITY } from "@/lib/site-config";
+import { ArrowRight } from "lucide-react";
+import { HERO, QUALITY, TWO_WHEELER } from "@/lib/site-config";
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <section id="top" aria-label="Hero" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr]">
         <div>
           <motion.p
             initial={prefersReducedMotion ? undefined : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-bg-raised px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"
+            className="kicker"
           >
-            <Zap className="h-3.5 w-3.5" aria-hidden="true" />
             {HERO.eyebrow}
           </motion.p>
 
@@ -26,7 +26,7 @@ export function Hero() {
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-6 font-display text-4xl font-bold leading-tight text-fg sm:text-6xl"
+            className="mt-6 font-display text-4xl font-bold leading-[1.05] text-fg sm:text-6xl"
           >
             {HERO.heading}
           </motion.h1>
@@ -44,49 +44,52 @@ export function Hero() {
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+            className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4"
           >
             <Link
               href="/our-products"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dim"
             >
               {HERO.cta}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
               href="/contact-us"
-              className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3 text-sm font-semibold text-fg transition-colors hover:border-primary hover:text-primary"
+              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-fg"
             >
               Get in Touch
+              <ArrowRight
+                className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              />
             </Link>
           </motion.div>
         </div>
 
         <motion.div
-          initial={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.95 }}
+          initial={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="relative mx-auto w-full max-w-sm"
+          className="corner-frame relative mx-auto w-full max-w-md"
         >
-          <div className="card-glow rounded-3xl border border-line bg-bg-raised p-8">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-fg-muted">
-                Charge Level
-              </span>
-              <Zap className="h-4 w-4 text-primary" aria-hidden="true" />
-            </div>
+          <div className="overflow-hidden rounded-lg border border-line bg-white">
+            <Image
+              src={TWO_WHEELER.heroImage!}
+              alt="A lineup of real Advantex lithium-ion battery packs, showing printed spec labels"
+              width={2048}
+              height={1365}
+              priority
+              className="h-auto w-full"
+            />
+          </div>
 
-            <div className="mt-4 flex h-16 items-center rounded-xl border-2 border-line p-1.5">
-              <div className="relative h-full flex-1 overflow-hidden rounded-lg bg-bg-raised-2">
-                <div className="motion-safe:animate-[charge-fill_2.8s_ease-in-out_infinite] h-full rounded-lg bg-gradient-to-r from-primary-dim to-primary" />
-              </div>
-              <div className="ml-1.5 h-6 w-2 rounded-r-sm bg-line" />
-            </div>
-
-            <p className="mt-4 text-sm text-fg-muted">
-              Engineered BMS, high-performance cells, and pure nickel strips — for reliability
-              that lasts.
-            </p>
+          <div className="spec-tag absolute -left-4 top-8 sm:-left-8">
+            <span className="spec-tag-value">48V – 72V</span>
+            <span className="spec-tag-label">Voltage Range</span>
+          </div>
+          <div className="spec-tag absolute -right-4 bottom-8 sm:-right-8">
+            <span className="spec-tag-value">21Ah – 43Ah</span>
+            <span className="spec-tag-label">Capacity Range</span>
           </div>
         </motion.div>
       </div>

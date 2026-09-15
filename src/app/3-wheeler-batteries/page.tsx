@@ -28,7 +28,7 @@ export default function ThreeWheelerPage() {
 
         <section className="mx-auto max-w-4xl px-5 pb-16 sm:px-8">
           <Reveal className="mb-6 text-center">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <p className="kicker">
               Available Configurations
             </p>
           </Reveal>
@@ -42,7 +42,7 @@ export default function ThreeWheelerPage() {
         {THREE_WHEELER.gallery && (
           <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
             <Reveal className="mb-8 text-center">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">Gallery</p>
+              <p className="kicker">Gallery</p>
             </Reveal>
             <ImageGallery images={THREE_WHEELER.gallery} />
           </section>
